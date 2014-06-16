@@ -37,4 +37,6 @@ namespace PixLocker
        return color;
       }		
 	}
+	
+	
 }

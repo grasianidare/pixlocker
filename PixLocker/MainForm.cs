@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace PixLocker
 {
@@ -29,9 +30,57 @@ namespace PixLocker
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		
+		private Color GetRgb(double r, double g, double b)
+        {
+            return Color.FromArgb(255, (byte)(r * 255.0), (byte)(g * 255.0), (byte)(b * 255.0));
+        }
+		
+		private Color ColorfromLum(float lum)
+		{
+			double h = 0;
+			double s = 0;
+			double v = lum;
+			
+            int hi = (int)Math.Floor(h / 60.0) % 6;
+            double f = (h / 60.0) - Math.Floor(h / 60.0);
+
+            double p = v * (1.0 - s);
+            double q = v * (1.0 - (f * s));
+            double t = v * (1.0 - ((1.0 - f) * s));
+
+            Color ret;
+
+            switch (hi)
+            {
+                case 0:
+                    ret = GetRgb(v, t, p);
+                    break;
+                case 1:
+                    ret = GetRgb(q, v, p);
+                    break;
+                case 2:
+                    ret = GetRgb(p, v, t);
+                    break;
+                case 3:
+                    ret = GetRgb(p, q, v);
+                    break;
+                case 4:
+                    ret = GetRgb(t, p, v);
+                    break;
+                case 5:
+                    ret = GetRgb(v, p, q);
+                    break;
+                default:
+                    ret = Color.FromArgb(0xFF, 0x00, 0x00, 0x00);
+                    break;
+            }
+            return ret;
+			
+		}
+		
 		void MainFormLoad(object sender, System.EventArgs e)
 		{
-			label1.Visible =false;
 			
 		}
 		void TmGOGOGOTick(object sender, System.EventArgs e)
@@ -49,20 +98,26 @@ namespace PixLocker
 			
 			
 			
-			lbHue.Text = pxCor.GetHue().ToString("N5");  //Math.Truncate(pxCor.GetHue()).ToString();
-			lbLuminance.Text = pxCor.GetBrightness().ToString("N5");  //Math.Truncate(pxCor.GetBrightness()).ToString();
-			lbSaturation.Text = pxCor.GetSaturation().ToString("N5");  //Math.Truncate(pxCor.GetSaturation()).ToString();
+			lbHue.Text = pxCor.GetHue().ToString("N3");  //Math.Truncate(pxCor.GetHue()).ToString();
+			lbLuminance.Text = pxCor.GetBrightness().ToString("N3");  //Math.Truncate(pxCor.GetBrightness()).ToString();
+			lbSaturation.Text = pxCor.GetSaturation().ToString("N3");  //Math.Truncate(pxCor.GetSaturation()).ToString();
 			
 			lbRed.Text = pxCor.R.ToString();
 			lbGreen.Text = pxCor.G.ToString();
 			lbBlue.Text = pxCor.B.ToString();
 			
+			
+			pnControl.BackColor = this.ColorfromLum(pxCor.GetBrightness());
 
 			
 		}
 		void CbAlwaysCheckedChanged(object sender, System.EventArgs e)
 		{
 			this.TopMost = cbAlways.Checked;
+		}
+		void LinkLabel1LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		{
+			Process.Start("https://github.com/grasianidare/pixlocker");
 		}
 	}
 }
