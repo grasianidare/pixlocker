@@ -1,0 +1,8 @@
+C:\Users\graco\github\pixlocker\PixLocker\bin\Debug\PixLocker.exe.config
+C:\Users\graco\github\pixlocker\PixLocker\bin\Debug\PixLocker.exe
+C:\Users\graco\github\pixlocker\PixLocker\bin\Debug\PixLocker.pdb
+C:\Users\graco\github\pixlocker\PixLocker\obj\Debug\PixLocker.csprojResolveAssemblyReference.cache
+C:\Users\graco\github\pixlocker\PixLocker\obj\Debug\PixLocker.MainForm.resources
+C:\Users\graco\github\pixlocker\PixLocker\obj\Debug\PixLocker.csproj.GenerateResource.Cache
+C:\Users\graco\github\pixlocker\PixLocker\obj\Debug\PixLocker.exe
+C:\Users\graco\github\pixlocker\PixLocker\obj\Debug\PixLocker.pdb
