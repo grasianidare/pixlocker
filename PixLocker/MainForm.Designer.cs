@@ -62,10 +62,12 @@ namespace PixLocker
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.cbAlways = new System.Windows.Forms.CheckBox();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			this.tabPage2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnColor
@@ -209,6 +211,7 @@ namespace PixLocker
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.cbAlways);
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -218,6 +221,13 @@ namespace PixLocker
 			resources.ApplyResources(this.tabPage3, "tabPage3");
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// cbAlways
+			// 
+			resources.ApplyResources(this.cbAlways, "cbAlways");
+			this.cbAlways.Name = "cbAlways";
+			this.cbAlways.UseVisualStyleBackColor = true;
+			this.cbAlways.CheckedChanged += new System.EventHandler(this.CbAlwaysCheckedChanged);
 			// 
 			// MainForm
 			// 
@@ -237,8 +247,10 @@ namespace PixLocker
 			this.tabPage1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
+			this.tabPage2.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.CheckBox cbAlways;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.GroupBox groupBox2;

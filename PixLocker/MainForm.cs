@@ -60,5 +60,9 @@ namespace PixLocker
 
 			
 		}
+		void CbAlwaysCheckedChanged(object sender, System.EventArgs e)
+		{
+			this.TopMost = cbAlways.Checked;
+		}
 	}
 }

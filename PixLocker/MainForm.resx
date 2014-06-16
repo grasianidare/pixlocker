@@ -633,6 +633,30 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cbAlways.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="cbAlways.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="cbAlways.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbAlways.Text" xml:space="preserve">
+    <value>Always on Top</value>
+  </data>
+  <data name="&gt;&gt;cbAlways.Name" xml:space="preserve">
+    <value>cbAlways</value>
+  </data>
+  <data name="&gt;&gt;cbAlways.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbAlways.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;cbAlways.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
