@@ -269,6 +269,7 @@ namespace PixLocker
 			this.Name = "MainForm";
 			this.TopMost = true;
 			this.Load += new System.EventHandler(this.MainFormLoad);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);

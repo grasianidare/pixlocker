@@ -19,6 +19,11 @@ namespace PixLocker
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		private bool mouseLocked;
+		private const string AppTitle = "PixLocker.NET";
+		
+		private Point freezedMouse;
+		
 		public MainForm()
 		{
 			//
@@ -81,11 +86,12 @@ namespace PixLocker
 		
 		void MainFormLoad(object sender, System.EventArgs e)
 		{
-			
+			this.KeyPreview = true;
+			mouseLocked = false;
 		}
 		void TmGOGOGOTick(object sender, System.EventArgs e)
 		{
-			Point rato = System.Windows.Forms.Cursor.Position;
+			Point rato = (mouseLocked ? freezedMouse : System.Windows.Forms.Cursor.Position);
 			
 			
 			Color pxCor = WinPixel.GetPixelColor(rato.X, rato.Y);
@@ -118,6 +124,17 @@ namespace PixLocker
 		void LinkLabel1LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			Process.Start("https://github.com/grasianidare/pixlocker");
+		}
+		void MainFormKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.F2)
+			{
+				mouseLocked = !mouseLocked;
+				freezedMouse = System.Windows.Forms.Cursor.Position;
+			}
+			
+			this.Text = (mouseLocked ? "[!]" : "") + AppTitle;
+					
 		}
 	}
 }
