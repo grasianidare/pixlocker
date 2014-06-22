@@ -20,6 +20,9 @@ namespace PixLocker
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		private int lastPixelX;
+		private int lastPixelY;
+		
 		struct MyPoint
 		{
 			public int x;
@@ -27,20 +30,21 @@ namespace PixLocker
 
 			public bool IsValid()
 			{
-				return ((x >= 0) && (y >= 0));
+				return ((x >= 0) && (y >= 0) && (x <= (SystemInformation.VirtualScreen.Width -1)) && (y <= (SystemInformation.VirtualScreen.Height -1)));
 			}
 		}
 		
 		
-		private IniParser ini;
+		//private IniParser ini;
 		//INI consts....
 		private const string AppTitle = "PixLocker.NET";
 		private const string IniConf = "CONF";
 		private const string IniAlways = "ALWAYSONTOP";
-		
+
 		
 		private bool mouseLocked;
 		private Point freezedMouse;
+		
 		
 		public MainForm()
 		{
@@ -104,25 +108,108 @@ namespace PixLocker
 		
 		void MainFormLoad(object sender, System.EventArgs e)
 		{
-			this.KeyPreview = true;
-			mouseLocked = false;
+			this.KeyPreview = true; //so the F2 key work
+			mouseLocked = false; //is the mouse location locked?
 			lbF2.Text = "F2 to " + (mouseLocked ? "un" : "") + "lock";
 			
-			
+			/* //testing ini files - .net don't like ini files :(
 			string lol = System.IO.Path.Combine(
 				Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
 				AppTitle + ".ini");
 			
-			//ini = new IniParser(lol);
+			ini = new IniParser(lol);
+			*/
 			
 			nudMedia.Maximum = SystemInformation.VirtualScreen.Height;
+			lastPixelX = SystemInformation.VirtualScreen.Width -1;
+			lastPixelY = SystemInformation.VirtualScreen.Height -1;
+			
+			
+			/* //trying to read app.settings...
+		<add key="AlwaysOnTop" value="true" />
+		<add key="MediaPixel" value="true" />
+		<add key="MediaRadius" value="2" />			 
+			 */
+			
+			
+			
+			
 		}
+		
+		private bool PXisValid(Point px)
+		{
+			return this.PXisValid(px.X, px.Y);
+		}
+
+		private bool PXisValid(int pxX, int pxY)
+		{
+			return ((pxX >= 0) && (pxX < lastPixelX) && (pxY >= 0) && (pxY < lastPixelY));
+		}
+		
+		private Color SeaOfPixels(Point position, int radius)
+		{
+			int length = (radius * 2) + 1; //yeah, I know, but Murphy...
+			MyPoint[,] squared = new MyPoint[length, length];
+			Color[,] rainbow = new Color[length, length];
+			int qtd = 0;
+			int x0 = position.X - radius;
+			int y0 = position.Y - radius;
+			
+			//for (int row = (position.X - length); row <= (position.X + length); row++)
+			for (int row = 0; row < length; row++)
+			{
+				for (int col = 0; col < length; col++)
+				{
+					if (PXisValid(x0+row, y0+col))
+					{
+						qtd++;
+						rainbow[row,col] = WinPixel.GetPixelColor(x0+row, y0+col);
+					}
+				}
+			}
+			
+			//calculating media...
+			int myR = 0;
+			int myG = 0;
+			int myB = 0;
+				
+			float myHu = 0;
+			float mySa = 0;
+			float myBr = 0;
+			for (int row = 0; row < length; row++)
+			{
+				for (int col = 0; col < length; col++)
+				{
+					myR += rainbow[row,col].R;
+					myG += rainbow[row,col].G;
+					myB += rainbow[row,col].B;
+						
+					myHu += rainbow[row,col].GetHue();
+					mySa += rainbow[row,col].GetSaturation();
+					myBr += rainbow[row,col].GetBrightness();
+				}
+			}
+			
+			int meR = Convert.ToInt32(myR / qtd);
+			int meG = Convert.ToInt32(myG / qtd);
+			int meB = Convert.ToInt32(myB / qtd);
+				
+			return Color.FromArgb(255, meR, meG, meB);
+			
+		}
+		
 		void TmGOGOGOTick(object sender, System.EventArgs e)
 		{
+			//current mouse position
 			Point rato = (mouseLocked ? freezedMouse : System.Windows.Forms.Cursor.Position);
+			//color to show on the panel preview
 			Color pxCor;
+			
 			if (cbMedia.Checked)
 			{
+				pxCor = this.SeaOfPixels(rato, Convert.ToInt32(nudMedia.Value));
+				#region OldCode
+				/*
 				//distance
 				int dist = Convert.ToInt32(nudMedia.Value);
 				
@@ -194,21 +281,24 @@ namespace PixLocker
 				int meB = Convert.ToInt32(myB / qtd);
 				
 				pxCor = Color.FromArgb(255, meR, meG, meB);
-
+				*/
+				#endregion
 			}
 			else
 			{
 			 	pxCor = WinPixel.GetPixelColor(rato.X, rato.Y);
 			}
+			
+			//writing the labels....
 			pnColor.BackColor = pxCor;
 			pnRed.Width = Convert.ToInt32(pxCor.R);
 			pnGreen.Width = Convert.ToInt32(pxCor.G);
 			pnBlue.Width = Convert.ToInt32(pxCor.B);
 				
 
-			lbHue.Text = pxCor.GetHue().ToString("N3");  //Math.Truncate(pxCor.GetHue()).ToString();
-			lbLuminance.Text = pxCor.GetBrightness().ToString("N3");  //Math.Truncate(pxCor.GetBrightness()).ToString();
-			lbSaturation.Text = pxCor.GetSaturation().ToString("N3");  //Math.Truncate(pxCor.GetSaturation()).ToString();
+			lbHue.Text = pxCor.GetHue().ToString("N3");  
+			lbLuminance.Text = pxCor.GetBrightness().ToString("N3");  
+			lbSaturation.Text = pxCor.GetSaturation().ToString("N3");
 				
 			lbRed.Text = pxCor.R.ToString();
 			lbGreen.Text = pxCor.G.ToString();

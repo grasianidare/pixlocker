@@ -660,8 +660,32 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 47</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>px</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="nudMedia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 46</value>
+    <value>68, 45</value>
   </data>
   <data name="nudMedia.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>
@@ -679,7 +703,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;nudMedia.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cbMedia.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 25</value>
@@ -703,7 +727,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;cbMedia.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="cbAlways.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 6</value>
@@ -727,7 +751,7 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;cbAlways.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -796,7 +820,7 @@
     <value>2</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>PixLocker.NET - v.0.2</value>
+    <value>PixLocker.NET - v.0.3</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

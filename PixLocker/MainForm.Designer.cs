@@ -60,6 +60,7 @@ namespace PixLocker
 			this.lbRed = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.label8 = new System.Windows.Forms.Label();
 			this.nudMedia = new System.Windows.Forms.NumericUpDown();
 			this.cbMedia = new System.Windows.Forms.CheckBox();
 			this.cbAlways = new System.Windows.Forms.CheckBox();
@@ -212,12 +213,18 @@ namespace PixLocker
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.label8);
 			this.tabPage2.Controls.Add(this.nudMedia);
 			this.tabPage2.Controls.Add(this.cbMedia);
 			this.tabPage2.Controls.Add(this.cbAlways);
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// label8
+			// 
+			resources.ApplyResources(this.label8, "label8");
+			this.label8.Name = "label8";
 			// 
 			// nudMedia
 			// 
@@ -234,13 +241,15 @@ namespace PixLocker
 			0});
 			this.nudMedia.Name = "nudMedia";
 			this.nudMedia.Value = new decimal(new int[] {
-			1,
+			2,
 			0,
 			0,
 			0});
 			// 
 			// cbMedia
 			// 
+			this.cbMedia.Checked = true;
+			this.cbMedia.CheckState = System.Windows.Forms.CheckState.Checked;
 			resources.ApplyResources(this.cbMedia, "cbMedia");
 			this.cbMedia.Name = "cbMedia";
 			this.cbMedia.UseVisualStyleBackColor = true;
@@ -316,6 +325,7 @@ namespace PixLocker
 			this.tabPage3.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.NumericUpDown nudMedia;
 		private System.Windows.Forms.CheckBox cbMedia;
 		private System.Windows.Forms.Label lbF2;
