@@ -60,15 +60,19 @@ namespace PixLocker
 			this.lbRed = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.nudMedia = new System.Windows.Forms.NumericUpDown();
+			this.cbMedia = new System.Windows.Forms.CheckBox();
 			this.cbAlways = new System.Windows.Forms.CheckBox();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.pnControl = new System.Windows.Forms.Panel();
+			this.lbF2 = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudMedia)).BeginInit();
 			this.tabPage3.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -208,10 +212,38 @@ namespace PixLocker
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.nudMedia);
+			this.tabPage2.Controls.Add(this.cbMedia);
 			this.tabPage2.Controls.Add(this.cbAlways);
 			resources.ApplyResources(this.tabPage2, "tabPage2");
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// nudMedia
+			// 
+			resources.ApplyResources(this.nudMedia, "nudMedia");
+			this.nudMedia.Maximum = new decimal(new int[] {
+			3000,
+			0,
+			0,
+			0});
+			this.nudMedia.Minimum = new decimal(new int[] {
+			1,
+			0,
+			0,
+			0});
+			this.nudMedia.Name = "nudMedia";
+			this.nudMedia.Value = new decimal(new int[] {
+			1,
+			0,
+			0,
+			0});
+			// 
+			// cbMedia
+			// 
+			resources.ApplyResources(this.cbMedia, "cbMedia");
+			this.cbMedia.Name = "cbMedia";
+			this.cbMedia.UseVisualStyleBackColor = true;
 			// 
 			// cbAlways
 			// 
@@ -254,16 +286,23 @@ namespace PixLocker
 			resources.ApplyResources(this.pnControl, "pnControl");
 			this.pnControl.Name = "pnControl";
 			// 
+			// lbF2
+			// 
+			resources.ApplyResources(this.lbF2, "lbF2");
+			this.lbF2.Name = "lbF2";
+			// 
 			// MainForm
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.lbF2);
 			this.Controls.Add(this.pnControl);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.pnBlue);
 			this.Controls.Add(this.pnGreen);
 			this.Controls.Add(this.pnRed);
 			this.Controls.Add(this.pnColor);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";
@@ -273,9 +312,13 @@ namespace PixLocker
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.nudMedia)).EndInit();
 			this.tabPage3.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.NumericUpDown nudMedia;
+		private System.Windows.Forms.CheckBox cbMedia;
+		private System.Windows.Forms.Label lbF2;
 		private System.Windows.Forms.Panel pnControl;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label1;
